@@ -6,6 +6,7 @@
         public string Name { get; set; } = "";
         public string Colour { get; set; } = "";
         public int DiceRollsLeft { get; set; } = 1;
+        public int PiecesNotInGoal { get; set; } = 4;
 
         public List<GamePiece> GamePieces { get; set; } = new List<GamePiece>();
 
