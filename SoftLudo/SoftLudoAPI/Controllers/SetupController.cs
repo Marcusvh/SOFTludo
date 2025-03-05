@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SoftLudoAPI.Models;
+using LudoModels;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,7 +18,7 @@ namespace SoftLudoAPI.Controllers
 
         // GET api/<SetupController>/ChoseColour
         [HttpGet("ChoseColour")]
-        public string ChoseColour()
+        public string ChoseColour(string colour)
         {
             return "value";
         }

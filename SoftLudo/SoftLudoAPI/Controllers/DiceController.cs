@@ -4,15 +4,15 @@
 
 namespace SoftLudoAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class DiceController : ControllerBase
     {
         // GET: api/<ValuesController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public int RollDice()
         {
-            
+            return 0;
         }
     }
 }
