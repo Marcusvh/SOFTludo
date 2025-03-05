@@ -1,15 +1,10 @@
-﻿namespace SoftLudoAPI.Services
+﻿using LudoModels;
+
+namespace SoftLudoAPI.Services
 {
     public class DiceService
     {
-        public int DiceRollsLeft { get; set; } = 1;
-
-        public int RollDice()
-        {
-            return 0;
-        }
-
-        private int AddAnotherRoll()
+        public int RollDice(Player p)
         {
             return 0;
         }
