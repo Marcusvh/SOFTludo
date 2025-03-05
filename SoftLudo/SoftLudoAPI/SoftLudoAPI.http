@@ -1,0 +1,6 @@
+@SoftLudoAPI_HostAddress = http://localhost:5139
+
+GET {{SoftLudoAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
