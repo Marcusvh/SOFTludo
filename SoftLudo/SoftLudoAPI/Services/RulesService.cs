@@ -19,8 +19,15 @@ namespace SoftLudoAPI.Services
         {
             return true;
         }
-
-        public bool CheckForSafeZone(GamePiece gp, int position)
+        public int RemainingPlayers() 
+        { 
+            return 0; 
+        }
+        public Player NextPlayer()
+        {
+            return new Player();
+        }
+        public bool CheckForSafeZone(int position)
         {
             return true;
         }
@@ -28,6 +35,10 @@ namespace SoftLudoAPI.Services
         public bool CheckForOwnGamePieceBlock(GamePiece gp, int position)
         {
             return true;
+        }
+        public int CheckForRemainingStepsTowardsGoal(GamePiece gp)
+        {
+            return 0;
         }
     }
 }
