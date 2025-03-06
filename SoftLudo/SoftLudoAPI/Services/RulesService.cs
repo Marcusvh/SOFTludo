@@ -20,7 +20,7 @@ namespace SoftLudoAPI.Services
             return true;
         }
 
-        public bool CheckForSafeZone(int position)
+        public bool CheckForSafeZone(GamePiece gp, int position)
         {
             return true;
         }
@@ -29,6 +29,5 @@ namespace SoftLudoAPI.Services
         {
             return true;
         }
-
     }
 }

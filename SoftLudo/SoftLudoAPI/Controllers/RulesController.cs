@@ -1,8 +1,6 @@
 ﻿using LudoModels;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace SoftLudoAPI.Controllers
 {
     [Route("api/v1/[controller]")]
@@ -12,6 +10,30 @@ namespace SoftLudoAPI.Controllers
         // GET: api/v1/Rules
         [HttpGet]
         public bool ValidateMove(GamePiece gp, int newPosition, List<Player> allPlayers)
+        {
+            return true;
+        }
+
+        [HttpGet]
+        public int CheckForOtherPlayersGamePiece(int position, List<Player> allPlayers)
+        {
+            return 0;
+        }
+
+        [HttpGet]
+        public bool CheckForWin(Player p)
+        {
+            return true;
+        }
+
+        [HttpGet]
+        public bool CheckForSafeZone(int position)
+        {
+            return true;
+        }
+
+        [HttpGet]
+        public bool CheckForOwnGamePieceBlock(GamePiece gp, int position)
         {
             return true;
         }
