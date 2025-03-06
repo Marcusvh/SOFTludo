@@ -3,22 +3,28 @@
 namespace LudoTests
 {
     [TestClass]
-    public sealed class Setup
+    public class Setup
     {
-            [TestMethod]
-            [DataRow(-1)]
-            [DataRow(0)]
-            [DataRow(1)]
-            [DataRow(5)]
-            public void SetupServicePlayerCountExpectFail(int playerCount)
-            {
-                SetupService setup = new();
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            SetupService setup = new();
+        }
 
-                Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
-                {
-                    setup.PlayerCount = playerCount;
-                });
-            }
+        [TestMethod]
+        [DataRow(-1)]
+        [DataRow(0)]
+        [DataRow(1)]
+        [DataRow(5)]
+        public void SetupServicePlayerCountExpectFail(int playerCount)
+        {
+            SetupService setup = new();
+
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
+            {
+                setup.PlayerCount = playerCount;
+            });
+        }
 
         [TestMethod]
         [DataRow(2)]

@@ -6,7 +6,7 @@
         public string Name { get; set; } = "";
         public string Colour { get; set; } = "";
         public int DiceRollsLeft { get; set; } = 1;
-        public int PiecesNotInGoal { get; set; } = 4;
+        public int PiecesInGoal { get; set; } = 0;
 
         public List<GamePiece> GamePieces { get; set; } = new List<GamePiece>();
 
@@ -14,11 +14,6 @@
         {
             return false;
             //return GamePieces.Any(p => !p.IsHome && !p.IsGoal);
-        }
-
-        public int AddAnotherRoll()
-        {
-            return 0;
         }
     }
 }

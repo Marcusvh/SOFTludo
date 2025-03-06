@@ -10,8 +10,8 @@ namespace LudoModels
     {
         public int Id { get; set; }
         public int Position { get; set; }
-        public bool IsHome { get; set; }
-        public bool IsGoal { get; set; }
-        public bool IsSafe { get; set; }
+        public bool IsHome { get; set; } = true;
+        public bool IsGoal { get; set; } = false;
+        public bool IsSafe { get; set; } = true;
     }
 }
