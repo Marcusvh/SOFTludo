@@ -9,7 +9,7 @@ namespace SoftLudoAPI.Services
             return 0;
         }
 
-        public void IfRollSix(Player p)
+        public void IfRollSix(Player p) // void?
         {
 
         }

@@ -1,24 +1,37 @@
-﻿using SoftLudoAPI.Services;
+﻿using LudoModels;
+using SoftLudoAPI.Services;
 
 namespace LudoTests
 {
     [TestClass]
     public class DiceServiceTest
     {
-        [TestInitialize]
-        public void TestInitialize()
-        {
-            DiceService diceService = new();
-        }
+        DiceService diceService = new();
 
 
         [TestMethod]
-        public int DiceService_RollDice_ExpectIntReturn()
+        [DataRow(null)]
+        public void DiceService_RollDice_ExpectFail(Player player)
+        {   
+            Assert.ThrowsException<ArgumentException>(() => diceService.RollDice(player));
+        }
+        [TestMethod]
+        public void DiceService_RollDice_ExpectSuccess()
         {
+            Player player = new();
 
-            DiceService diceService = new();
+            int result = diceService.RollDice(player);
 
-            return 0;
+            Assert.IsTrue(result >= 1 && result <= 6);
+        }
+        [TestMethod]
+        public void DiceService_IfRollSix_ExpectSuccess() // TODO: 
+        {
+            Player player = new();
+
+            diceService.IfRollSix(player);
+
+            Assert.Fail();
         }
     }
 }
