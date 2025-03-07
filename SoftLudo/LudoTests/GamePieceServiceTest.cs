@@ -1,4 +1,5 @@
-﻿using SoftLudoAPI.Services;
+﻿using LudoModels;
+using SoftLudoAPI.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,62 @@ namespace LudoTests
     [TestClass]
     public class GamePieceServiceTest
     {
-        [TestInitialize]
-        public void TestInitialize()
+        GamePieceService gps = new();
+        GamePiece gp = new();
+
+        // Models
+        //////////////////////////////////////////
+        [TestMethod]
+        [DataRow(-1)]
+        [DataRow(0)]
+        public void GamePiece_Id_ExpectFail(int id)
         {
-            GamePieceService gps = new();
+            gp.Id = id;
+
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => gps.MoveGamePiece(gp, 0));
+        }
+        [TestMethod]
+        [DataRow(1)]
+        [DataRow(int.MaxValue)]
+        public void GamePiece_Id_ExpectSuccess(int id)
+        {
+            gp.Id = id;
+            
+            Assert.AreEqual(id, gp.Id);
         }
 
+        // TODO: Position
+        // TODO: when Position type is decided, add tests for when the bools are correct. such as when position is X, is that home/goal/safe?
+
+        [TestMethod]
+        [DataRow(false)]
+        [DataRow(true)]
+        public void GamePiece_IsHome_ExpectSuccess(bool isHome)
+        {
+            gp.IsHome = isHome;
+            Assert.AreEqual(isHome, gp.IsHome);
+        }
+
+        [TestMethod]
+        [DataRow(false)]
+        [DataRow(true)]
+        public void GamePiece_IsGoal_ExpectSuccess(bool isGoal)
+        {
+            gp.IsGoal = isGoal;
+            Assert.AreEqual(isGoal, gp.IsGoal);
+        }
+
+        [TestMethod]
+        [DataRow(false)]
+        [DataRow(true)]
+        public void GamePiece_IsSafe_ExpectSuccess(bool isSafe)
+        {
+            gp.IsSafe = isSafe;
+            Assert.AreEqual(isSafe, gp.IsSafe);
+        }
+
+        // Services
+        //////////////////////////////////////////
         [TestMethod]
         public bool GamePieceService_MoveGamePiece_ExpectIntReturn()
         {
