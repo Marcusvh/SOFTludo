@@ -1,3 +1,5 @@
+// Morten kommer til at give os teoratisk benspen (brættet går i en cirkel, kommer 7 spillere, osv)
+// måske have en liste af forskellige felter. 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

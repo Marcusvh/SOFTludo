@@ -13,5 +13,9 @@ namespace SoftLudoAPI.Services
         {
 
         }
+        public List<Player> FindPlayerOrder(int players)
+        {
+            return new List<Player>();
+        }
     }
 }

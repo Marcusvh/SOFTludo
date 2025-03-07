@@ -15,7 +15,7 @@ namespace SoftLudoAPI.Controllers
         }
 
         // GET api/v1/Setup/ChoseColour
-        [HttpGet("ChoseColour")]
+        [HttpGet("ChoseColour")] //post?, to edit the colour of the players.
         public string ChoseColour(string colour)
         {
             return "value";

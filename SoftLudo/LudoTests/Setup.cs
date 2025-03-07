@@ -89,6 +89,6 @@ namespace LudoTests
                 setup.Setup(playerCount);
             });
         }
-        
+
     }
 }

@@ -11,7 +11,7 @@ namespace SoftLudoAPI.Services
             return true;
         }
 
-        public string ChoseColour(string colour)
+        public string ChoseColour(string colour) // set the colour of the players
         {
             return "value";
         }
