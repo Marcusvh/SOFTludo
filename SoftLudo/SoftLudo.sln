@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftLudoAPI", "SoftLudoAPI\SoftLudoAPI.csproj", "{2912B1DA-8553-4071-BE72-48FB7498EB58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftLudoAPI", "SoftLudoAPI\SoftLudoAPI.csproj", "{2912B1DA-8553-4071-BE72-48FB7498EB58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LudoModels", "LudoModels\LudoModels.csproj", "{079EE6C1-FC24-4F3D-97DA-733A5BAB82C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LudoModels", "LudoModels\LudoModels.csproj", "{079EE6C1-FC24-4F3D-97DA-733A5BAB82C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LudoTests", "LudoTests\LudoTests.csproj", "{2C7F70B5-12CF-4363-9EAD-CA9F4F46C83D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LudoTest", "LudoTest\LudoTest.csproj", "{022438D1-7CC1-48F2-A508-3F0E19BC3A2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{079EE6C1-FC24-4F3D-97DA-733A5BAB82C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{079EE6C1-FC24-4F3D-97DA-733A5BAB82C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{079EE6C1-FC24-4F3D-97DA-733A5BAB82C4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C7F70B5-12CF-4363-9EAD-CA9F4F46C83D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C7F70B5-12CF-4363-9EAD-CA9F4F46C83D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C7F70B5-12CF-4363-9EAD-CA9F4F46C83D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C7F70B5-12CF-4363-9EAD-CA9F4F46C83D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{022438D1-7CC1-48F2-A508-3F0E19BC3A2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{022438D1-7CC1-48F2-A508-3F0E19BC3A2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{022438D1-7CC1-48F2-A508-3F0E19BC3A2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{022438D1-7CC1-48F2-A508-3F0E19BC3A2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
