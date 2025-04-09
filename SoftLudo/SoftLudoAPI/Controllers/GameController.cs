@@ -23,7 +23,6 @@ public class GameController : ControllerBase
     {
         var games = gameService.GetGames();
 
-        //mapping here?
         return Ok(games);
     }
 
@@ -37,7 +36,7 @@ public class GameController : ControllerBase
         {
             return NoContent();
         }
-        //mapping here?
+
         return Ok(game);
     }
 
@@ -46,71 +45,64 @@ public class GameController : ControllerBase
     {
         var game = gameService.CreateGame(playerId);
 
-        if (game == null)
+        if (!game.Success)
         {
-            return BadRequest("Burde vi bruge en result patterne ller kaste exceptions for korrekte fejlbeskeder?");
-        }    
+            return BadRequest(game.ErrorType);
+        }
 
-        return Ok(game);
+        return Ok(game.Value);
     }
 
-#warning kan vi forbedre routes?
     [HttpPost("{id}/join")]
     public ActionResult<GameResponse> JoinGame(int id, [FromBody] int playerId)
     {
         var game = gameService.JoinGame(playerId, id);
 
-        if (game == null)
+        if (!game.Success)
         {
-            return BadRequest("Burde vi bruge en result patterne ller kaste exceptions for korrekte fejlbeskeder?");
+            return BadRequest(game.ErrorType);
         }
 
-        return Ok(game);
+        return Ok(game.Value);
     }
 
-#warning kan vi forbedre routes?
     [HttpPost("{id}/start")]
     public ActionResult<GameResponse> StartGame(int id, [FromBody] int playerId)
     {
         var game = gameService.StartGame(playerId, id);
 
-        if (game == null)
+        if (!game.Success)
         {
-            return BadRequest("Burde vi bruge en result patterne ller kaste exceptions for korrekte fejlbeskeder?");
+            return BadRequest(game.ErrorType);
         }
 
-        return Ok(game);
+        return Ok(game.Value);
     }
 
-#warning kan vi forbedre routes?
     [HttpPost("{id}/roll")]
     public ActionResult<GameResponse> Roll(int id, [FromBody] int playerId)
     {
         var game = gameService.Roll(playerId, id);
 
-        if (game == null)
+        if (!game.Success)
         {
-            return BadRequest("Burde vi bruge en result patterne ller kaste exceptions for korrekte fejlbeskeder?");
+            return BadRequest(game.ErrorType);
         }
 
-        return Ok(game);
+        return Ok(game.Value);
     }
 
-#warning kan vi forbedre routes?
     [HttpPost("{id}/play")]
     public ActionResult<GameResponse> PlayTurn(int id, [FromBody] PlayTurnRequest request)
     {
-#warning baser command på PlayTurnRequest fra body
-        var command = new Command(); //based on PlayTurnRequest request
+        var game = gameService.PlayTurn(request.PlayerId, id, request.Command);
 
-        var game = gameService.PlayTurn(request.PlayerId, id, command);
-
-        if (game == null)
+        if (!game.Success)
         {
-            return BadRequest("Burde vi bruge en result patterne ller kaste exceptions for korrekte fejlbeskeder?");
+            return BadRequest(game.ErrorType);
         }
 
-        return Ok(game);
+        return Ok(game.Value);
     }
 
 
