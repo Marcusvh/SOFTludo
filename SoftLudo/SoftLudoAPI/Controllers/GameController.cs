@@ -32,7 +32,7 @@ public class GameController : ControllerBase
     {
         var game = gameService.GetGame(id);
 
-        if (game == null)
+        if (!game.Success)
         {
             return NoContent();
         }
