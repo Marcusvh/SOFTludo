@@ -7,4 +7,3 @@ public class Player
     public List<GamePiece> Tokens { get; set; } = new List<GamePiece>();
     public bool HasWon { get; set; } = false;
 }
-}
