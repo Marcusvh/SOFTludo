@@ -4,7 +4,7 @@ namespace SoftLudoAPI.Services;
 
 public interface IGameService
 {
-    Game GetGame(int id);
+    Result<Game> GetGame(int id);
     IEnumerable<Game> GetGames();
     Result<Game> CreateGame(int playerId);
     Result<Game> JoinGame(int playerId, int gameId);
