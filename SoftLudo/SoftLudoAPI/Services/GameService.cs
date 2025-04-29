@@ -9,6 +9,11 @@ public class GameService : IGameService
         throw new NotImplementedException();
     }
 
+    public Result<Game> GetGame(int id)
+    {
+        throw new NotImplementedException();
+    }
+
     public IEnumerable<Game> GetGames()
     {
         throw new NotImplementedException();
@@ -34,8 +39,4 @@ public class GameService : IGameService
         throw new NotImplementedException();
     }
 
-    Result<Game> IGameService.GetGame(int id)
-    {
-        throw new NotImplementedException();
-    }
 }
