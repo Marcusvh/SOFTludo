@@ -27,7 +27,7 @@ public class InMemoryGameRepo : IGameRepository
 
     public Game? UpdateGame(Game game)
     {
-        var existingGame = games.First(g => g.Id == game.Id);
+        var existingGame = games.FirstOrDefault(g => g.Id == game.Id);
         
         if (existingGame != null)
         {

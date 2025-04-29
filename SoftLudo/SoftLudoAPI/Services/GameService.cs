@@ -31,17 +31,42 @@ public class GameService : IGameService
 
     public Result<Game> GetGame(int id)
     {
-        throw new NotImplementedException();
+        var game = gameRepository.GetGame(id);
+
+        if (game == null)
+        {
+            return new Result<Game>(ErrorType.GameNotFound);
+        }
+
+        return new Result<Game>(game);
     }
 
     public IEnumerable<Game> GetGames()
     {
-        throw new NotImplementedException();
+        return gameRepository.GetGames();
     }
 
     public Result<Game> JoinGame(int playerId, int gameId)
     {
-        throw new NotImplementedException();
+        var game = gameRepository.GetGame(gameId);
+
+        if (game == null)
+        {
+            return new Result<Game>(ErrorType.GameNotFound);
+        }
+
+        var playerResult = playerService.GetPlayer(playerId);
+
+        if (playerResult.Failure)
+        {
+            return new Result<Game>(ErrorType.PlayerNotFound);
+        }
+
+        game.players.Add(playerResult.Value!);
+       
+        var updatedGame = gameRepository.UpdateGame(game)!;
+
+        return new Result<Game>(updatedGame);
     }
 
     public Result<Game> PlayTurn(int playerId, int gameId, Command command)

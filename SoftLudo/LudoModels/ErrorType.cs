@@ -3,4 +3,5 @@ public enum ErrorType
 {
     None = 0,
     PlayerNotFound = 1,
+    GameNotFound = 2,
 }

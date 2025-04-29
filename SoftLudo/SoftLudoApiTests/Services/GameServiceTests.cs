@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using LudoModels;
 using SoftLudoApi.Repositories;
 using SoftLudoApi.Services;
 
@@ -38,19 +39,40 @@ public class GameServiceTests
     [TestMethod()]
     public void GetGameTest()
     {
-        Assert.Fail();
+        var player = playerRepo.GetPlayers().First();
+        var createdGame = gameRepo.CreateGame(player);
+
+        var game = gameService.GetGame(createdGame.Id);
+
+        game.Success.Should().BeTrue();
+        game.Value!.Id.Should().Be(createdGame.Id);
+        
     }
 
     [TestMethod()]
     public void GetGamesTest()
     {
-        Assert.Fail();
+        var player = playerRepo.GetPlayers().First();
+        gameRepo.CreateGame(player);
+        gameRepo.CreateGame(player);
+
+        var games = gameService.GetGames();
+
+        games.Count().Should().Be(2); 
     }
 
     [TestMethod()]
     public void JoinGameTest()
     {
-        Assert.Fail();
+        var firstPlayer = playerRepo.GetPlayers().First();
+        var secondPlayer = playerRepo.GetPlayers().Last();
+        var players = new List<Player> { firstPlayer, secondPlayer };
+        var game = gameService.CreateGame(firstPlayer.Id).Value!;
+
+        var result = gameService.JoinGame(secondPlayer.Id, game.Id);
+
+        result.Success.Should().BeTrue();
+        result.Value!.players.Should().Contain(players);
     }
 
     [TestMethod()]
