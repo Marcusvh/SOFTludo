@@ -9,7 +9,7 @@ namespace SoftLudoApiTests;
 public class GameManagementStepDefinitions
 {
 
-    public IGameService GameService = new GameService();
+    //public IGameService GameService = new GameService();
     public Player Player = null!;
     public Game Game = null!;
 

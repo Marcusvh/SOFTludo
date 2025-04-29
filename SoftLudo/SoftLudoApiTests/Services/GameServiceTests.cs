@@ -8,14 +8,19 @@ namespace SoftLudoAPI.Services.Tests;
 public class GameServiceTests
 {
 
-    private IGameService gameService = new GameService();
-    private IPlayerRepository playerRepo = new InMemoryPlayerRepo();
+    private IPlayerService playerService = null!;
+    private IGameService gameService = null!;
+    private IPlayerRepository playerRepo = null!;
+    private IGameRepository gameRepo = null!;
 
     [TestInitialize]
     public void Setup()
     {
-        gameService = new GameService();
         playerRepo = new InMemoryPlayerRepo();
+        gameRepo = new InMemoryGameRepo();
+        playerService = new PlayerService(playerRepo);
+        gameService = new GameService(gameRepo, playerService);
+
         playerRepo.SavePlayer("john");
         playerRepo.SavePlayer("jane");
     }

@@ -2,6 +2,5 @@
 public enum ErrorType
 {
     None = 0,
-    NotFound = 1,
-    NotAllowed = 2,
+    PlayerNotFound = 1,
 }
