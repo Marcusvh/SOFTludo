@@ -27,7 +27,6 @@ public class InMemoryPlayerRepoTests
     [TestMethod()]
     public void CanGetPlayers()
     {
-
         playerRepository.SavePlayer("1");
         playerRepository.SavePlayer("2");
 
@@ -44,7 +43,7 @@ public class InMemoryPlayerRepoTests
         playerRepository.SavePlayer(expectedName);
         playerRepository.SavePlayer(notExpectedName);
 
-        var player = playerRepository.GetPlayer(1);
+        var player = playerRepository.GetPlayer(1)!;
 
 
         player.Id.Should().Be(1);
@@ -65,8 +64,4 @@ public class InMemoryPlayerRepoTests
         players = playerRepository.GetPlayers();
         players.Count().Should().Be(1);
     }
-
-
-
-
 }

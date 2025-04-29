@@ -4,26 +4,32 @@ namespace SoftLudoApi.Repositories;
 
 public class InMemoryPlayerRepo : IPlayerRepository
 {
-
+    private int nextId = 1;
     private readonly List<Player> players = new List<Player>();
 
     public void DeletePlayer(int id)
     {
-        throw new NotImplementedException();
+        players.RemoveAll(p => p.Id == id);
     }
 
-    public Player GetPlayer(int id)
+    public Player? GetPlayer(int id)
     {
-        throw new NotImplementedException();
+        return players.FirstOrDefault(p => p.Id == id);
     }
 
     public IEnumerable<Player> GetPlayers()
     {
-        throw new NotImplementedException();
+        return players;
     }
 
     public Player SavePlayer(string username)
     {
-        throw new NotImplementedException();
+        var newPlayer = new Player
+        {
+            Id = nextId++,
+            Name = username,
+        };
+        players.Add(newPlayer); 
+        return newPlayer;
     }
 }

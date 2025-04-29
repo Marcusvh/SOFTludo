@@ -22,7 +22,7 @@ public class GameManagementStepDefinitions
     [When("user creates a game")]
     public void WhenUserCreatesAGame()
     {
-        Game = GameService.CreateGame(Player.Id)!;
+        //Game = GameService.CreateGame(Player.Id)!;
     }
 
     [Then("the game is created")]

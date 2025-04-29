@@ -12,6 +12,4 @@ public class PlayerController : ControllerBase
     {
         return Ok();
     }
-
-
 }
