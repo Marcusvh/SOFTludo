@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LudoModels;
+﻿namespace LudoModels;
 public enum ErrorType
 {
     None = 0,
-    Error = 1,
-        
-        
-        
-
+    NotFound = 1,
+    NotAllowed = 2,
 }
