@@ -254,7 +254,7 @@ namespace LudoRegnroll.Features
     await testRunner.GivenAsync("all players have joined the game", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 33
-    await testRunner.WhenAsync("each player rolls the dice", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.WhenAsync("each player rolls the dice in the beginning", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 34
     await testRunner.ThenAsync("the player with the highest roll should take the first turn", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");

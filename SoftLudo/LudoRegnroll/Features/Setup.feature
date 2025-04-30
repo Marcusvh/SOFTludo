@@ -30,7 +30,7 @@
 
   Scenario: Determining first player
     Given all players have joined the game
-    When each player rolls the dice
+    When each player rolls the dice in the beginning
     Then the player with the highest roll should take the first turn
     And in case of a tie, those players should roll again
 

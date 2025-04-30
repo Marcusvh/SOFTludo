@@ -5,7 +5,7 @@
 
   Scenario: Starting position for a game piece
     Given I have a game piece in the home area
-    And I roll a six
+    And I roll a 6
     When I move the game piece out
     Then the game piece should be on the starting position for my color
 

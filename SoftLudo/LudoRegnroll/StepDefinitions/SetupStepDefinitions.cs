@@ -148,8 +148,8 @@ namespace Ludo.Tests.Steps
             _scenarioContext.Set(_players, "Players");
         }
 
-        [When("each player rolls the dice")]
-        public void WhenEachPlayerRollsTheDice()
+        [When("each player rolls the dice in the beginning")]
+        public void WhenEachPlayerRollsTheDiceInTheBeginning()
         {
             var players = _scenarioContext.Get<List<Player>>("Players");
             var dice = new DiceService();

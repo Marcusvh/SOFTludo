@@ -115,7 +115,7 @@ namespace LudoRegnroll.Features
     await testRunner.GivenAsync("I have a game piece in the home area", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 8
-    await testRunner.AndAsync("I roll a six", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.AndAsync("I roll a 6", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 9
     await testRunner.WhenAsync("I move the game piece out", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");

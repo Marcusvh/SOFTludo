@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using FluentAssertions;
 using LudoModels;
+using LudoModels.BoardSpec;
 using Reqnroll;
 
 namespace Ludo.Tests.Steps
@@ -26,6 +27,14 @@ namespace Ludo.Tests.Steps
         public void GivenIHaveAGamePieceOnTheBoard()
         {
             _gamePiece = new GamePiece { IsInHomeArea = false, MainBoardPosition = 1 };
+            _board = new Board
+            {
+                RegularSpaces = new List<Space>(),
+                HomeAreas = new List<HomeArea>(),
+                HomeLanes = new List<HomeLane>(),
+                GoalAreas = new List<GoalLane>(),
+                SafeHomeBase = new List<GoalLane>()
+            };
             _scenarioContext.Set(_gamePiece, "GamePiece");
             _scenarioContext.Set(_board, "Board");
         }
@@ -64,7 +73,7 @@ namespace Ludo.Tests.Steps
             gamePiece.IsInHomeArea.Should().BeTrue();
 
             gamePiece.IsInHomeArea = false;
-            gamePiece.MainBoardPosition = 0; // Starting position 0
+            gamePiece.MainBoardPosition = 0;
 
             _scenarioContext.Set(gamePiece, "GamePiece");
         }
@@ -75,7 +84,7 @@ namespace Ludo.Tests.Steps
             var gamePiece = _scenarioContext.Get<GamePiece>("GamePiece");
 
             gamePiece.IsInHomeArea.Should().BeFalse();
-            gamePiece.MainBoardPosition.Should().Be(0); // starting position is 0
+            gamePiece.MainBoardPosition.Should().Be(0);
         }
 
         [Then(@"the game piece should move (\d+) positions forward")]

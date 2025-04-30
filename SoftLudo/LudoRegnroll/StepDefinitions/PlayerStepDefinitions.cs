@@ -34,8 +34,16 @@ namespace Ludo.Tests.Steps
         [When("the player joins the game")]
         public void WhenThePlayerJoinsTheGame()
         {
-            var player = new Player { Name = "Player1", Color = "Blue" };
-            _game.AddPlayer(player); // Remove to PlayerService
+            var player = new Player { Name = "Player1", Color = "Blue",
+                GamePieces = new List<GamePiece>
+                {
+                    new GamePiece { Id = 1, MainBoardPosition = 1, Color = "Blue" },
+                    new GamePiece { Id = 2, MainBoardPosition = 2, Color = "Blue" },
+                    new GamePiece { Id = 3, MainBoardPosition = 3 , Color = "Blue"},
+                    new GamePiece { Id = 4, MainBoardPosition = 4 , Color = "Blue"}
+                }
+            };
+            _game.AddPlayer(player); // Move to PlayerService
             _scenarioContext.Set(player, "Player");
             _scenarioContext.Set(_game, "Game");
         }
@@ -105,7 +113,7 @@ namespace Ludo.Tests.Steps
         [Given("the player's last game piece is one space away from the goal")]
         public void GivenThePlayersLastGamePieceIsOneSpaceAwayFromTheGoal()
         {
-            // This is already set up in the previous step
+            // Perhaps delete
             // [Given("I roll the exact number needed to reach the goal")] in GamePieceStepDefinitions
         }
 
@@ -127,7 +135,7 @@ namespace Ludo.Tests.Steps
             currentPlayer.GamePieces[5].IsInGoal = true;
             currentPlayer.GamePieces[5].IsInHomeLane = false;
 
-            // Implement game logic has won
+            // Implement game logic, has won
             var hasWon = currentPlayer.GamePieces.All(p => p.IsInGoal);
 
             hasWon.Should().BeTrue();
@@ -192,7 +200,7 @@ namespace Ludo.Tests.Steps
         [When("it is the player's turn to move")]
         public void WhenItIsThePlayersTurnToMove()
         {
-            _diceResult = 6; // This allows all pieces to be moved
+            _diceResult = 6;
             _scenarioContext.Set(_diceResult, "DiceResult");
         }
 

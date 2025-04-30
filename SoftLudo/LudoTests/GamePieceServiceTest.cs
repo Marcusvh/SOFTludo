@@ -38,8 +38,8 @@ public class GamePieceServiceTest
     [DataRow(true)]
     public void GamePiece_IsHome_ExpectSuccess(bool isHome)
     {
-        gp.IsHome = isHome;
-        Assert.AreEqual(isHome, gp.IsHome);
+        gp.IsInHomeArea = isHome;
+        Assert.AreEqual(isHome, gp.IsInHomeArea);
     }
 
     [TestMethod]
@@ -47,8 +47,8 @@ public class GamePieceServiceTest
     [DataRow(true)]
     public void GamePiece_IsGoal_ExpectSuccess(bool isGoal)
     {
-        gp.IsGoal = isGoal;
-        Assert.AreEqual(isGoal, gp.IsGoal);
+        gp.IsInGoal = isGoal;
+        Assert.AreEqual(isGoal, gp.IsInGoal);
     }
 
     [TestMethod]
@@ -56,8 +56,8 @@ public class GamePieceServiceTest
     [DataRow(true)]
     public void GamePiece_IsSafe_ExpectSuccess(bool isSafe)
     {
-        gp.IsSafe = isSafe;
-        Assert.AreEqual(isSafe, gp.IsSafe);
+        gp.IsSafeHomeBase = isSafe;
+        Assert.AreEqual(isSafe, gp.IsSafeHomeBase);
     }
 
     // Services

@@ -2,7 +2,7 @@
 
 public class Player
 {
-    // public int Id { get; set; }      // ikke i brug, kun hvis der bliver oprettet en DB
+    public int Id { get; set; }      // ikke i brug, kun hvis der bliver oprettet en DB
     public string Name { get; set; } = "";
     public string Color { get; set; } = "";
 

@@ -13,39 +13,39 @@ public class RulseServiceTest
         {
             Id = 1,
             Name = "Player 1",
-            Colour = "Red",
+            Color = "Red",
             GamePieces = new List<GamePiece>
             {
-                new GamePiece { Id = 1, Position = 0 },
-                new GamePiece { Id = 2, Position = 0 },
-                new GamePiece { Id = 3, Position = 0 },
-                new GamePiece { Id = 4, Position = 0 }
+                new GamePiece { Id = 1, MainBoardPosition = 0 },
+                new GamePiece { Id = 2, MainBoardPosition = 0 },
+                new GamePiece { Id = 3, MainBoardPosition = 0 },
+                new GamePiece { Id = 4, MainBoardPosition = 0 }
             },
         };
         Player p2 = new()
         {
             Id = 2,
             Name = "Player 2",
-            Colour = "Blue",
+            Color = "Blue",
             GamePieces = new List<GamePiece>
             {
-                new GamePiece { Id = 5, Position = 0 },
-                new GamePiece { Id = 6, Position = 0 },
-                new GamePiece { Id = 7, Position = 0 },
-                new GamePiece { Id = 8, Position = 0 }
+                new GamePiece { Id = 5, MainBoardPosition = 0 },
+                new GamePiece { Id = 6, MainBoardPosition = 0 },
+                new GamePiece { Id = 7, MainBoardPosition = 0 },
+                new GamePiece { Id = 8, MainBoardPosition = 0 }
             },
         };
         Player p3 = new()
         {
             Id = 3,
             Name = "Player 3",
-            Colour = "Green",
+            Color = "Green",
             GamePieces = new List<GamePiece>
             {
-                new GamePiece { Id = 9, Position = 0 },
-                new GamePiece { Id = 10, Position = 0 },
-                new GamePiece { Id = 11, Position = 0 },
-                new GamePiece { Id = 12, Position = 0 }
+                new GamePiece { Id = 9, MainBoardPosition = 0 },
+                new GamePiece { Id = 10, MainBoardPosition = 0 },
+                new GamePiece { Id = 11, MainBoardPosition = 0 },
+                new GamePiece { Id = 12, MainBoardPosition = 0 }
             },
         };
 
@@ -53,13 +53,13 @@ public class RulseServiceTest
         {
             Id = 4,
             Name = "Player 4",
-            Colour = "Yellow",
+            Color = "Yellow",
             GamePieces = new List<GamePiece>
             {
-                new GamePiece { Id = 13, Position = 0 },
-                new GamePiece { Id = 14, Position = 0 },
-                new GamePiece { Id = 15, Position = 0 },
-                new GamePiece { Id = 16, Position = 0 }
+                new GamePiece { Id = 13, MainBoardPosition = 0 },
+                new GamePiece { Id = 14, MainBoardPosition = 0 },
+                new GamePiece { Id = 15, MainBoardPosition = 0 },
+                new GamePiece { Id = 16, MainBoardPosition = 0 }
             },
         };
 

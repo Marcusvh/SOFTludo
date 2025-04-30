@@ -109,7 +109,6 @@ namespace LudoRegnroll.StepDefinitions
         [When("I roll a six")]
         public void WhenIRollASix()
         {
-            // Mock a roll of 6 for testing purposes
             _scenarioContext.Set(6, "DiceResult");
         }
 
