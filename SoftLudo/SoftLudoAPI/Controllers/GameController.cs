@@ -6,7 +6,7 @@ using SoftLudoAPI.Services;
 
 namespace SoftLudoAPI.Controllers;
 
-[Route("api/[controller]s")]
+[Route("[controller]s")]
 [ApiController]
 public class GameController : ControllerBase
 {
@@ -45,7 +45,7 @@ public class GameController : ControllerBase
     {
         var game = gameService.CreateGame(playerId);
 
-        if (!game.Success)
+        if (game.Failure)
         {
             return BadRequest(game.ErrorType);
         }

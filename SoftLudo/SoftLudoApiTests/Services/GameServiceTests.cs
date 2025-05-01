@@ -33,7 +33,7 @@ public class GameServiceTests
 
         var game = gameService.CreateGame(player.Id);
 
-        game.Value!.players.Should().HaveCount(1).And.Subject.First().Id.Should().Be(player.Id);
+        game.Value!.Players.Should().HaveCount(1).And.Subject.First().Id.Should().Be(player.Id);
     }
 
     [TestMethod()]
@@ -72,7 +72,7 @@ public class GameServiceTests
         var result = gameService.JoinGame(secondPlayer.Id, game.Id);
 
         result.Success.Should().BeTrue();
-        result.Value!.players.Should().Contain(players);
+        result.Value!.Players.Should().Contain(players);
     }
 
     [TestMethod()]

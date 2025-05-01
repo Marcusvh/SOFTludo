@@ -2,7 +2,7 @@
 
 namespace SoftLudoApi.Controllers;
 
-[Route("api/[controller]s")]
+[Route("[controller]s")]
 [ApiController]
 public class PlayerController : ControllerBase
 {

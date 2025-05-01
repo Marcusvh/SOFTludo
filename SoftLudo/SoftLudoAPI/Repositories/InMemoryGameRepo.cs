@@ -15,7 +15,7 @@ public class InMemoryGameRepo : IGameRepository
     {
         var game = new Game();
         game.Id = nextId++;
-        game.players.Add(host);
+        game.Players.Add(host);
         games.Add(game);
         return game;
     }

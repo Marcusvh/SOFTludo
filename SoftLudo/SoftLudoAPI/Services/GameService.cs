@@ -62,7 +62,7 @@ public class GameService : IGameService
             return new Result<Game>(ErrorType.PlayerNotFound);
         }
 
-        game.players.Add(playerResult.Value!);
+        game.Players.Add(playerResult.Value!);
        
         var updatedGame = gameRepository.UpdateGame(game)!;
 
