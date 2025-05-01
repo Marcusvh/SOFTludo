@@ -107,7 +107,6 @@ namespace Ludo.Tests.Steps
         [Given("I roll the exact number needed to enter the home lane")]
         public void GivenIRollTheExactNumberNeededToEnterTheHomeLane()
         {
-            // player color is such that home lane entry is at position 40
             _diceResult = 1;
             _scenarioContext.Set(_diceResult, "DiceResult");
         }

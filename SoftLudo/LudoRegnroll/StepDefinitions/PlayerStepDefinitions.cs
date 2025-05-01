@@ -264,7 +264,7 @@ namespace Ludo.Tests.Steps
             var game = _scenarioContext.Get<Game>("Game");
 
             // Implement game logic, check if each player had one turn
-            game.CurrentPlayerIndex.Should().Be(0); // Back to the first player
+            game.CurrentPlayerIndex.Should().Be(0);
         }
     }
 }
