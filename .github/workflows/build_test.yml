@@ -1,4 +1,4 @@
-name: Build and Test (.NET + xUnit + RegnRoll)
+name: Build and Test
 
 on:
   push:
@@ -20,10 +20,10 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore SoftLudo/SoftLudo.sln
 
       - name: Build
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build SoftLudo/SoftLudo.sln --no-restore --configuration Release
 
       - name: Run tests
-        run: dotnet test --no-build --verbosity normal --logger "console;verbosity=detailed"
+        run: dotnet test SoftLudo/SoftLudo.sln --no-build --verbosity normal --logger "console;verbosity=detailed"
