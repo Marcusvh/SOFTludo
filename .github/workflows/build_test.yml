@@ -14,15 +14,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-#      - name: List directory structure
-#        run: |
-#          echo "Root directory:"
-#          ls -la
-#          echo "\nFind all .sln files:"
-#          find . -name "*.sln"
-#          echo "\nFind all .csproj files:"
-#          find . -name "*.csproj"
-
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
