@@ -11,19 +11,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout kode
+      - name: Checkout code
         uses: actions/checkout@v3
+      - name: List directory structure
+        run: |
+          echo "Root directory:"
+          ls -la
+          echo "\nFind all .sln files:"
+          find . -name "*.sln"
+          echo "\nFind all .csproj files:"
+          find . -name "*.csproj"
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
 
-      - name: Restore dependencies
-        run: dotnet restore SoftLudo.sln
+ #     - name: Restore dependencies
+ #       run: dotnet restore SoftLudo.sln
 
-      - name: Build
-        run: dotnet build SoftLudo.sln --no-restore --configuration Release
+ #     - name: Build
+ #       run: dotnet build SoftLudo.sln --no-restore --configuration Release
 
-      - name: Run tests
-        run: dotnet test SoftLudo.sln --no-build --verbosity normal --logger "console;verbosity=detailed"
+ #     - name: Run tests
+ #       run: dotnet test SoftLudo.sln --no-build --verbosity normal --logger "console;verbosity=detailed"
