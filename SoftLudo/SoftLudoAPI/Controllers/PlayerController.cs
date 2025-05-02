@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SoftLudoApi.Services;
 
 namespace SoftLudoApi.Controllers;
 
@@ -6,10 +7,17 @@ namespace SoftLudoApi.Controllers;
 [ApiController]
 public class PlayerController : ControllerBase
 {
+    private readonly IPlayerService playerService;
+    public PlayerController(IPlayerService playerService) 
+    { 
+        this.playerService = playerService;
+    }
 
     [HttpGet]
-    public IActionResult Get()
+    public ActionResult<IEnumerable<Player>> Get()
     {
-        return Ok();
+        var players = playerService.GetPlayers();
+
+        return Ok(players);
     }
 }
