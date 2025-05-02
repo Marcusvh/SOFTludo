@@ -1,5 +1,6 @@
 ﻿using LudoModels;
-using LudoModels.Dtos;
+using LudoModels.Requests;
+using LudoModels.Responses;
 
 namespace SoftLudoApi.Utils;
 
@@ -13,5 +14,19 @@ public static class Mapper
             Name = player.Name,
         };
         return result;
+    }
+
+    public static IEnumerable<PlayerResponseDto> ToResponseDto(IEnumerable<Player> players)
+    {
+        return players.Select(ToResponseDto);
+    }
+
+    public static Player ToPlayer(CreatePlayerRequest request)
+    {
+        var player = new Player
+        {
+            Name = request.Name,
+        };
+        return player;
     }
 }

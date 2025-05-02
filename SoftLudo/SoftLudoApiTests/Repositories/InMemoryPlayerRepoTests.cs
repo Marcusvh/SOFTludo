@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using LudoModels;
 
 namespace SoftLudoApi.Repositories.Tests;
 
@@ -19,16 +20,16 @@ public class InMemoryPlayerRepoTests
     {
         var expectedName = "johndoe";
 
-        var createdPlayer = playerRepository.SavePlayer(expectedName);
+        var createdPlayer = playerRepository.SavePlayer(new Player { Name = expectedName});
 
-        createdPlayer.Name.Should().Be(expectedName);
+        createdPlayer.Value!.Name.Should().Be(expectedName);
     }
 
     [TestMethod()]
     public void CanGetPlayers()
     {
-        playerRepository.SavePlayer("1");
-        playerRepository.SavePlayer("2");
+        playerRepository.SavePlayer(new Player { Name = "1" });
+        playerRepository.SavePlayer(new Player { Name = "2" });
 
         var players = playerRepository.GetPlayers();
 
@@ -38,23 +39,23 @@ public class InMemoryPlayerRepoTests
     [TestMethod()]
     public void CanGetPlayerById()
     {
-        var expectedName = "1";
-        var notExpectedName = "2";  
-        playerRepository.SavePlayer(expectedName);
-        playerRepository.SavePlayer(notExpectedName);
+        var expectedPlayer = new Player { Name = "1"};
+        var notExpectedPlayer = new Player { Name = "2" };  
+        playerRepository.SavePlayer(expectedPlayer);
+        playerRepository.SavePlayer(notExpectedPlayer);
 
         var player = playerRepository.GetPlayer(1)!;
 
 
         player.Id.Should().Be(1);
-        player.Name.Should().Be(expectedName);
+        player.Name.Should().Be(expectedPlayer.Name);
     }
 
     [TestMethod()]
     public void CanDeletePlayers()
     {
-        playerRepository.SavePlayer("1");
-        playerRepository.SavePlayer("2");
+        playerRepository.SavePlayer(new Player { Name = "1" });
+        playerRepository.SavePlayer(new Player { Name = "2" });
         var players = playerRepository.GetPlayers();
 
 

@@ -12,10 +12,9 @@ public class PlayerService : IPlayerService
         this.playerRepository = playerRepository;
     }
 
-    public Result<Player> CreatePlayer(string name)
+    public Result<Player> CreatePlayer(Player player)
     {
-        var player = playerRepository.SavePlayer(name);
-        return new Result<Player>(player);
+        return playerRepository.SavePlayer(player);
     }
 
     public Result<bool> DeletePlayer(int id)

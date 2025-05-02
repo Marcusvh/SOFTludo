@@ -1,4 +1,4 @@
-﻿namespace LudoModels.Dtos;
+﻿namespace LudoModels.Responses;
 public class PlayerResponseDto
 {
     public int Id { get; set; }
