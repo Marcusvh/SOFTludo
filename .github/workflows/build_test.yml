@@ -29,10 +29,10 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore ./SoftLudo/SoftLudo.sln
+        run: dotnet restore ./SoftLudo/SoftLudoAPI/SoftLudoAPI.csproj
 
       - name: Build
-        run: dotnet build ./SoftLudo/SoftLudo.sln --no-restore --configuration Release
+        run: dotnet build ./SoftLudo/SoftLudoAPI/SoftLudoAPI.csproj --no-restore --configuration Release
 
       - name: Run tests
-        run: dotnet test ./SoftLudo/SoftLudo.sln --no-build --verbosity normal --logger "console;verbosity=detailed"
+        run: dotnet test ./SoftLudo/SoftLudoAPI/SoftLudoAPI.csproj --no-build --verbosity normal --logger "console;verbosity=detailed"
