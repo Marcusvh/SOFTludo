@@ -1,6 +1,5 @@
 using System;
 using FluentAssertions;
-using LudoModels;
 using Reqnroll;
 using SoftLudoAPI.Services;
 

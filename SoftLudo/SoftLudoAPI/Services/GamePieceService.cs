@@ -1,6 +1,4 @@
-﻿using LudoModels;
-
-namespace SoftLudoAPI.Services;
+﻿namespace SoftLudoAPI.Services;
 
 public class GamePieceService
 {

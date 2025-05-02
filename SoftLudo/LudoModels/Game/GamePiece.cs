@@ -1,4 +1,4 @@
-﻿namespace LudoModels;
+﻿namespace LudoModels.Game;
 public class GamePiece
 {
     public int Id { get; set; }
