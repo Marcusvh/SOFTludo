@@ -6,4 +6,5 @@ public class Game
     public readonly ICollection<Player> Players = new List<Player>();
     public readonly ICollection<Player> Rankings = new List<Player>();
     public Player Host { get; set; } = null!;
+    public GameState State { get; set; }
 }
