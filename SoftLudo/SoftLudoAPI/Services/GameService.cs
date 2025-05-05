@@ -16,7 +16,6 @@ public class GameService : IGameService
 
     public Result<Game> CreateGame(int playerId)
     {
-
         var playerResult = playerService.GetPlayer(playerId);
 
         if (playerResult.Failure)
