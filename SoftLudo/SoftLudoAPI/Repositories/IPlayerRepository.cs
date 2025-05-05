@@ -6,6 +6,6 @@ public interface IPlayerRepository
 {
     Player? GetPlayer(int id);
     IEnumerable<Player> GetPlayers();
-    Player SavePlayer(string username);
+    Result<Player> SavePlayer(Player player);
     bool DeletePlayer(int id);
 }

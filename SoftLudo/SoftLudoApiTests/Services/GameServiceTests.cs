@@ -22,8 +22,8 @@ public class GameServiceTests
         playerService = new PlayerService(playerRepo);
         gameService = new GameService(gameRepo, playerService);
 
-        playerRepo.SavePlayer("john");
-        playerRepo.SavePlayer("jane");
+        playerRepo.SavePlayer(new Player { Name = "John" });
+        playerRepo.SavePlayer(new Player { Name = "Jane" });
     }
 
     [TestMethod()]
