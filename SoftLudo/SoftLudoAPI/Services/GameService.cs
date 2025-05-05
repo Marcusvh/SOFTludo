@@ -80,7 +80,32 @@ public class GameService : IGameService
 
     public Result<Game> StartGame(int playerId, int gameId)
     {
-        throw new NotImplementedException();
-    }
+        var game = gameRepository.GetGame(gameId);
 
+        if (game == null)
+        {
+            return new Result<Game>(ErrorType.GameNotFound);
+        }
+
+        if (game.Host.Id != playerId)
+        {
+            return new Result<Game>(ErrorType.Unauthorized);
+        }
+
+        if (game.State != GameState.Lobby)
+        {
+            return new Result<Game>(ErrorType.NotStartable);
+        }
+
+#warning magic number possibly needs to be moved to some sort of config
+        const int MINIMUM_AMOUNT_OF_PLAYERS = 2;
+        if (game.Players.Count() < MINIMUM_AMOUNT_OF_PLAYERS)
+        {
+            return new Result<Game>(ErrorType.NotEnoughPlayers);
+        }
+
+        game.State = GameState.Running;
+        var result = gameRepository.UpdateGame(game)!;
+        return new Result<Game>(result);
+    }
 }

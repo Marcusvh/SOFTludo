@@ -13,10 +13,13 @@ public class InMemoryGameRepo : IGameRepository
     }
     public Game CreateGame(Player host)
     {
-        var game = new Game();
-        game.Id = nextId++;
-        game.Players.Add(host);
-        game.Host = host;
+        var game = new Game{
+            Id = nextId++,
+            Host = host,
+            State = GameState.Lobby,
+            Players = new List<Player> { host }
+        };
+        
         games.Add(game);
         return game;
     }
