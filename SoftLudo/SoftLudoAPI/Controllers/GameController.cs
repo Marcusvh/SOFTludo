@@ -93,6 +93,7 @@ public class GameController : ControllerBase
     }
 
     [HttpPost("{id}/play")]
+#warning add game id as well as player id on this
     public ActionResult<GameResponse> PlayTurn(int id, [FromBody] PlayTurnRequest request)
     {
         var game = gameService.PlayTurn(request.PlayerId, id, request.Command);
