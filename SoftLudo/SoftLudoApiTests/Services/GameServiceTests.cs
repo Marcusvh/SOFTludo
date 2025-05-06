@@ -1,95 +1,123 @@
 ﻿using FluentAssertions;
 using LudoModels;
+using Moq;
 using SoftLudoApi.Repositories;
 using SoftLudoApi.Services;
 
 namespace SoftLudoAPI.Services.Tests;
 
-[TestClass()]
+[TestClass]
 public class GameServiceTests
 {
+    private Mock<IPlayerService> playerServiceMock = null!;
+    private Mock<IGameRepository> gameRepoMock = null!;
+    private GameService gameService = null!;
 
-    private IPlayerService playerService = null!;
-    private IGameService gameService = null!;
-    private IPlayerRepository playerRepo = null!;
-    private IGameRepository gameRepo = null!;
+    private Player player1 = new() { Id = 1, Name = "John" };
+    private Player player2 = new() { Id = 2, Name = "Jane" };
+
+    private Game testGame = null!;
 
     [TestInitialize]
     public void Setup()
     {
-        playerRepo = new InMemoryPlayerRepo();
-        gameRepo = new InMemoryGameRepo();
-        playerService = new PlayerService(playerRepo);
-        gameService = new GameService(gameRepo, playerService);
+        playerServiceMock = new Mock<IPlayerService>();
+        gameRepoMock = new Mock<IGameRepository>();
+        gameService = new GameService(gameRepoMock.Object, playerServiceMock.Object);
 
-        playerRepo.SavePlayer(new Player { Name = "John" });
-        playerRepo.SavePlayer(new Player { Name = "Jane" });
+        testGame = new Game { Id = 100 };
+        testGame.Players.Add(player1);
+
+        playerServiceMock.Setup(s => s.GetPlayer(1))
+                         .Returns(new Result<Player>(player1));
+        playerServiceMock.Setup(s => s.GetPlayer(2))
+                         .Returns(new Result<Player>(player2));
+
+        gameRepoMock.Setup(r => r.GetGame(testGame.Id))
+                    .Returns(testGame);
     }
 
-    [TestMethod()]
+    [TestMethod]
     public void CreateGameTest()
     {
-        var player = playerRepo.GetPlayers().First();
+        // Arrange
+        gameRepoMock.Setup(r => r.CreateGame(player1))
+                    .Returns((Player host) =>
+                    {
+                        var game = new Game { Id = 200 };
+                        game.Players.Add(host);
+                        return game;
+                    });
 
-        var game = gameService.CreateGame(player.Id);
+        // Act
+        var result = gameService.CreateGame(player1.Id);
 
-        game.Value!.Players.Should().HaveCount(1).And.Subject.First().Id.Should().Be(player.Id);
+        // Assert
+        result.Success.Should().BeTrue();
+        result.Value!.Players.Should().HaveCount(1);
+        result.Value.Players.First().Id.Should().Be(player1.Id);
     }
 
-    [TestMethod()]
+    [TestMethod]
     public void GetGameTest()
     {
-        var player = playerRepo.GetPlayers().First();
-        var createdGame = gameRepo.CreateGame(player);
+        // Act
+        var result = gameService.GetGame(testGame.Id);
 
-        var game = gameService.GetGame(createdGame.Id);
-
-        game.Success.Should().BeTrue();
-        game.Value!.Id.Should().Be(createdGame.Id);
-        
+        // Assert
+        result.Success.Should().BeTrue();
+        result.Value!.Id.Should().Be(testGame.Id);
     }
 
-    [TestMethod()]
+    [TestMethod]
     public void GetGamesTest()
     {
-        var player = playerRepo.GetPlayers().First();
-        gameRepo.CreateGame(player);
-        gameRepo.CreateGame(player);
+        // Arrange
+        var game1 = new Game { Id = 1 };
+        game1.Players.Add(player1);
+        var game2 = new Game { Id = 2 };
+        game2.Players.Add(player2);
 
-        var games = gameService.GetGames();
+        gameRepoMock.Setup(r => r.GetGames()).Returns(new List<Game> { game1, game2 });
 
-        games.Count().Should().Be(2); 
+        // Act
+        var result = gameService.GetGames();
+
+        // Assert
+        result.Should().HaveCount(2);
     }
 
-    [TestMethod()]
+    [TestMethod]
     public void JoinGameTest()
     {
-        var firstPlayer = playerRepo.GetPlayers().First();
-        var secondPlayer = playerRepo.GetPlayers().Last();
-        var players = new List<Player> { firstPlayer, secondPlayer };
-        var game = gameService.CreateGame(firstPlayer.Id).Value!;
+        // Arrange
+        gameRepoMock.Setup(r => r.UpdateGame(It.IsAny<Game>()))
+                    .Returns<Game>(g => g); 
 
-        var result = gameService.JoinGame(secondPlayer.Id, game.Id);
+        // Act
+        var result = gameService.JoinGame(player2.Id, testGame.Id);
 
+        // Assert
         result.Success.Should().BeTrue();
-        result.Value!.Players.Should().Contain(players);
+        result.Value!.Players.Should().Contain(p => p.Id == player2.Id);
+        result.Value.Players.Should().HaveCount(2);
     }
 
-    [TestMethod()]
+    [TestMethod]
     public void PlayTurnTest()
     {
-        Assert.Fail();
+        Assert.Fail("Not implemented yet.");
     }
 
-    [TestMethod()]
+    [TestMethod]
     public void RollTest()
     {
-        Assert.Fail();
+        Assert.Fail("Not implemented yet.");
     }
 
-    [TestMethod()]
+    [TestMethod]
     public void StartGameTest()
     {
-        Assert.Fail();
+        Assert.Fail("Not implemented yet.");
     }
 }
