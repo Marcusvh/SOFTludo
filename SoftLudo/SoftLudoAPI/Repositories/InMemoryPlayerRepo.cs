@@ -23,14 +23,26 @@ public class InMemoryPlayerRepo : IPlayerRepository
         return players;
     }
 
-    public Player SavePlayer(string username)
+    public Result<Player> SavePlayer(Player player)
     {
+        if (!ValidateUsername(player.Name))
+        {
+            return new Result<Player>(ErrorType.InvalidUsername);
+        }
+
         var newPlayer = new Player
         {
             Id = nextId++,
-            Name = username,
+            Name = player.Name,
         };
+
         players.Add(newPlayer); 
-        return newPlayer;
+
+        return new Result<Player>(newPlayer);
+    }
+
+    private bool ValidateUsername(string username)
+    {
+        return !players.Any(p => p.Name == username);
     }
 }
