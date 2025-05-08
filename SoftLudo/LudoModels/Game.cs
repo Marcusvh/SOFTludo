@@ -9,7 +9,7 @@ public class Game
     public GameState State { get; set; }
     public int? CurrentPlayerId { get; set; }
 
-    private readonly Random rng = new();
+
 
     public void RollForStart()
     {
