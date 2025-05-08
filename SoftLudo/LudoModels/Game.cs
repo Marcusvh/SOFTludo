@@ -5,33 +5,32 @@ public class Game
     public int Id { get; set; }
     public ICollection<Player> Players { get; set; } = new List<Player>();
     public ICollection<Player> Rankings { get; set; } = new List<Player>();
+    private IDice dice { get; set; }
     public Player Host { get; set; } = null!;
     public GameState State { get; set; }
     public int? CurrentPlayerId { get; set; }
-
-
-
-    public void RollForStart()
+    public Game()
     {
-        if (Players.Count < 2)
-        {
-            throw new InvalidOperationException("Not enough players to start.");
-        }
+        dice = new Dice(1, 6);
+    }
 
+
+    public void DetermineStartingPlayer()
+    {
         foreach (var player in Players)
         {
-            player.StartRoll = rng.Next(1, 7);
+            player.LatestRoll = dice.Roll();
         }
 
-        var highestRoll = Players.Max(p => p.StartRoll);
-        var topRollPlayers = Players.Where(p => p.StartRoll == highestRoll).ToList();
+        var highestRoll = Players.Max(p => p.LatestRoll);
+        var tiedRollPlayers = Players.Where(p => p.LatestRoll == highestRoll).ToList();
 
-        if (topRollPlayers.Count > 1)
+        if (tiedRollPlayers.Count > 1)
         {
-            throw new InvalidOperationException("Tie in start roll. Reroll required.");
+            
         }
 
-        CurrentPlayerId = topRollPlayers.First().Id;
+        CurrentPlayerId = tiedRollPlayers.First().Id;
     }
     public int RollDice(int playerId)
     {

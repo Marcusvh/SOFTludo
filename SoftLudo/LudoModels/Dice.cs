@@ -8,7 +8,7 @@ public class Dice : IDice
 
     public int Roll()
     {
-        return random.Next(min, max);
+        return random.Next(min, max + 1);
     }
 
     public Dice(int min, int max, int seed = 0)
