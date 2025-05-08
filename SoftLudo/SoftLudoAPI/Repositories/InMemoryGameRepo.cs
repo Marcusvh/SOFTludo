@@ -16,7 +16,6 @@ public class InMemoryGameRepo : IGameRepository
         var game = new Game{
             Id = nextId++,
             Host = host,
-            State = GameState.Lobby,
             Players = new List<Player> { host }
         };
         

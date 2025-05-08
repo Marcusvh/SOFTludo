@@ -23,7 +23,13 @@ public class GameService : IGameService
             return new Result<Game>(ErrorType.PlayerNotFound);
         }
 
+        if (playerResult.Value!.CurrentGameId.HasValue)
+        {
+            return new Result<Game>(ErrorType.PlayerAlreadyInGame);
+        }
+
         var game = gameRepository.CreateGame(playerResult.Value!);
+        playerResult.Value!.CurrentGameId = game.Id;
 
         return new Result<Game>(game);
     }
@@ -61,6 +67,12 @@ public class GameService : IGameService
             return new Result<Game>(ErrorType.PlayerNotFound);
         }
 
+        if (playerResult.Value!.CurrentGameId.HasValue)
+        {
+            return new Result<Game>(ErrorType.PlayerAlreadyInGame);
+        }
+
+        playerResult.Value!.CurrentGameId = game.Id;
         game.Players.Add(playerResult.Value!);
        
         var updatedGame = gameRepository.UpdateGame(game)!;
@@ -103,8 +115,8 @@ public class GameService : IGameService
         {
             return new Result<Game>(ErrorType.NotEnoughPlayers);
         }
-
-        game.State = GameState.Running;
+#warning move the gamestate running to another class?
+        //game.State = GameState.Running;
         var result = gameRepository.UpdateGame(game)!;
         return new Result<Game>(result);
     }

@@ -5,41 +5,58 @@ public class Game
     public int Id { get; set; }
     public ICollection<Player> Players { get; set; } = new List<Player>();
     public ICollection<Player> Rankings { get; set; } = new List<Player>();
-    private IDice dice { get; set; }
+    private readonly IDice dice;
     public Player Host { get; set; } = null!;
-    public GameState State { get; set; }
-    public int? CurrentPlayerId { get; set; }
-    public Game()
+    public GameState State { get; private set; }
+    public Player? CurrentPlayer { get; set; }
+    private int nextCommandId = 1;
+    public IEnumerable<Command> Commands { get => GenerateCommands(); }
+
+    public IEnumerable<Command> GenerateCommands()
     {
-        dice = new Dice(1, 6);
+        return new List<Command>
+        {
+            new Command
+            {
+                GameId = Id,
+                Id = nextCommandId++,
+                PlayerId = 1,//CurrentPlayer!.Id,
+                Type = CommandType.Roll
+            }
+        };
     }
 
 
-    public void DetermineStartingPlayer()
+    public Game()
     {
-        foreach (var player in Players)
+        State = GameState.Lobby;
+        dice = new Dice(1, 6);
+    }
+
+    private Player DetermineStartingPlayer(IEnumerable<Player> players)
+    {
+        foreach (var player in players)
         {
             player.LatestRoll = dice.Roll();
         }
 
-        var highestRoll = Players.Max(p => p.LatestRoll);
-        var tiedRollPlayers = Players.Where(p => p.LatestRoll == highestRoll).ToList();
+        var highestRoll = players.Max(p => p.LatestRoll);
+        var tiedRolls = players.Where(p => p.LatestRoll == highestRoll).ToList();
 
-        if (tiedRollPlayers.Count > 1)
+        while (tiedRolls.Any())
         {
-            
+            foreach (var player in players)
+            {
+                player.LatestRoll = dice.Roll();
+            }
+            highestRoll = players.Max(p => p.LatestRoll);
+            tiedRolls = players.Where(p => p.LatestRoll == highestRoll).ToList();
         }
 
-        CurrentPlayerId = tiedRollPlayers.First().Id;
+        return tiedRolls.First();
     }
     public int RollDice(int playerId)
     {
-        if (State != GameState.Running)
-            throw new InvalidOperationException("Game is not running.");
-
-        if (playerId != CurrentPlayerId)
-            throw new InvalidOperationException("Not this player's turn.");
-
-        return rng.Next(1, 7);
+        return dice.Roll();
     }
 }
