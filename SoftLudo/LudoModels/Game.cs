@@ -18,21 +18,27 @@ public class Game
             throw new InvalidOperationException("Not enough players to start.");
         }
 
-        foreach (var player in Players)
+        var contenders = new List<Player>(Players);
+
+        while (true)
         {
-            player.StartRoll = rng.Next(1, 7);
+            foreach (var player in contenders)
+            {
+                player.StartRoll = rng.Next(1, 7);
+            }
+
+            var highestRoll = contenders.Max(p => p.StartRoll);
+
+            contenders = contenders.Where(p => p.StartRoll == highestRoll).ToList();
+
+            if (contenders.Count == 1)
+            {
+                CurrentPlayerId = contenders[0].Id;
+                return;
+            }
         }
-
-        var highestRoll = Players.Max(p => p.StartRoll);
-        var topRollPlayers = Players.Where(p => p.StartRoll == highestRoll).ToList();
-
-        if (topRollPlayers.Count > 1)
-        {
-            throw new InvalidOperationException("Tie in start roll. Reroll required.");
-        }
-
-        CurrentPlayerId = topRollPlayers.First().Id;
     }
+
     public int RollDice(int playerId)
     {
         if (State != GameState.Running)
