@@ -104,7 +104,7 @@ public class GameService : IGameService
             return new Result<Game>(ErrorType.Unauthorized);
         }
 
-        if (game.State != GameState.Lobby)
+        if (game.State != State.Lobby)
         {
             return new Result<Game>(ErrorType.NotStartable);
         }

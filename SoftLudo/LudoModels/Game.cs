@@ -7,7 +7,11 @@ public class Game
     public ICollection<Player> Rankings { get; set; } = new List<Player>();
     private readonly IDice dice;
     public Player Host { get; set; } = null!;
-    public GameState State { get; private set; }
+    public State State { get; private set; }
+
+
+
+
     public Player? CurrentPlayer { get; set; }
     private int nextCommandId = 1;
     public IEnumerable<Command> Commands { get => GenerateCommands(); }
@@ -29,7 +33,7 @@ public class Game
 
     public Game()
     {
-        State = GameState.Lobby;
+        State = State.Lobby;
         dice = new Dice(1, 6);
     }
 

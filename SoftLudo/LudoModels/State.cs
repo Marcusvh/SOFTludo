@@ -1,6 +1,6 @@
 ﻿namespace LudoModels;
 
-public enum GameState
+public enum State
 {
     None = 0,
     Lobby = 1,

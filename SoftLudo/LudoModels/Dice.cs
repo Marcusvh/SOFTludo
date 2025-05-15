@@ -2,13 +2,20 @@
 
 public class Dice : IDice
 {
+    public int RollsRemaining { get; set; }
     private readonly int min;
     private readonly int max;
     private readonly Random random;
 
     public int Roll()
     {
-        return random.Next(min, max + 1);
+        var result = random.Next(min, max + 1);
+        if (result == max)
+        {
+            RollsRemaining = 1;
+        }
+
+        return result;
     }
 
     public Dice(int min, int max, int seed = 0)
