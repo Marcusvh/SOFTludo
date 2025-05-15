@@ -7,5 +7,6 @@ public enum ErrorType
     InvalidUsername = 3,
     Unauthorized = 4,
     NotStartable = 5,
-    NotEnoughPlayers = 6
+    NotEnoughPlayers = 6,
+    PlayerAlreadyInGame = 7,
 }

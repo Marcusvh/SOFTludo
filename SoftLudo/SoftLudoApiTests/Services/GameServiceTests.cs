@@ -110,9 +110,19 @@ public class GameServiceTests
     }
 
     [TestMethod]
-    public void RollTest()
+    [DataRow(1, 6, 0)]
+    [DataRow(1, 6, 100)]
+    [DataRow(1, 6, 999)]
+    public void Roll_ShouldReturnValueWithinRange(int min, int max, int seed)
     {
-        Assert.Fail("Not implemented yet.");
+        // Arrange
+        var dice = new Dice(min, max, seed);
+
+        // Act
+        int result = dice.Roll();
+
+        // Assert
+        result.Should().BeGreaterThanOrEqualTo(min).And.BeLessThanOrEqualTo(max);
     }
 
     [TestMethod]

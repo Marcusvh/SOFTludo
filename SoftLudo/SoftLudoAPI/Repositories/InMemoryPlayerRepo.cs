@@ -7,6 +7,12 @@ public class InMemoryPlayerRepo : IPlayerRepository
     private int nextId = 1;
     private readonly List<Player> players = new List<Player>();
 
+    public InMemoryPlayerRepo()
+    {
+        SavePlayer(new Player { Name = "Per" });
+        SavePlayer(new Player { Name = "Sven" });
+    }
+
     public bool DeletePlayer(int id)
     {
         var amountDeleted = players.RemoveAll(p => p.Id == id);
