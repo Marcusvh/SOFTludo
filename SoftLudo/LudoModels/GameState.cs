@@ -6,4 +6,5 @@ public enum GameState
     Lobby = 1,
     Running = 2,
     Concluded = 3,
+    Created = 4,
 }

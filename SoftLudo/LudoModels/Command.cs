@@ -1,4 +1,6 @@
 ﻿namespace LudoModels;
-public class Command
+public enum Command
 {
+    MovePiece = 1,
+    InvalidMove = 2,
 }

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LudoModels", "LudoModels\Lu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftLudoApiTests", "SoftLudoApiTests\SoftLudoApiTests.csproj", "{BB3295C3-D692-4C6D-895D-5482A58BA175}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LudoRegnrollTests", "LudoRegnrollTests\LudoRegnrollTests.csproj", "{166A7D8E-BBB7-48B7-B548-5326F48FA0E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{BB3295C3-D692-4C6D-895D-5482A58BA175}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB3295C3-D692-4C6D-895D-5482A58BA175}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB3295C3-D692-4C6D-895D-5482A58BA175}.Release|Any CPU.Build.0 = Release|Any CPU
+		{166A7D8E-BBB7-48B7-B548-5326F48FA0E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{166A7D8E-BBB7-48B7-B548-5326F48FA0E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{166A7D8E-BBB7-48B7-B548-5326F48FA0E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{166A7D8E-BBB7-48B7-B548-5326F48FA0E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
