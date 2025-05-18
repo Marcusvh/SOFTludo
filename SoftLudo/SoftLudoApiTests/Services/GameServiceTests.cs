@@ -109,19 +109,24 @@ public class GameServiceTests
         Assert.Fail("Not implemented yet.");
     }
 
+    //[DataRow(1, 6, 0)]
+    //[DataRow(1, 6, 100)]
+    //[DataRow(1, 6, 999)]
+    public static IEnumerable<object[]> RollTestData =>
+    new List<object[]>
+    {
+        new object[] { 1, 6, 0 },
+        new object[] { 1, 6, 100 },
+        new object[] { 1, 6, 999 },
+    };
+
     [TestMethod]
-    [DataRow(1, 6, 0)]
-    [DataRow(1, 6, 100)]
-    [DataRow(1, 6, 999)]
+    [DynamicData(nameof(RollTestData), DynamicDataSourceType.Property)]
     public void Roll_ShouldReturnValueWithinRange(int min, int max, int seed)
     {
-        // Arrange
         var dice = new Dice(min, max, seed);
-
-        // Act
         int result = dice.Roll();
 
-        // Assert
         result.Should().BeGreaterThanOrEqualTo(min).And.BeLessThanOrEqualTo(max);
     }
 
