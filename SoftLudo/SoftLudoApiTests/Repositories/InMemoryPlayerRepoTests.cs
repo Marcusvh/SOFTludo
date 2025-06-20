@@ -28,11 +28,14 @@ public class InMemoryPlayerRepoTests
     [TestMethod()]
     public void CanGetPlayers()
     {
+        //Arrange
         playerRepository.SavePlayer(new Player { Name = "1" });
         playerRepository.SavePlayer(new Player { Name = "2" });
 
+        //Act
         var players = playerRepository.GetPlayers();
 
+        //Assert
         players.Count().Should().Be(2);
     }
 

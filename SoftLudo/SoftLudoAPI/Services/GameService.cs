@@ -8,7 +8,8 @@ public class GameService : IGameService
 {
     private readonly IGameRepository gameRepository; 
     private readonly IPlayerService playerService;
-    public GameService(IGameRepository gameRepository, IPlayerService playerService) 
+    public GameService(IGameRepository gameRepository, 
+        IPlayerService playerService) 
     {
         this.gameRepository = gameRepository; 
         this.playerService = playerService;

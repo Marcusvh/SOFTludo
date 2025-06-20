@@ -121,7 +121,9 @@ public class GameServiceTests
     };
 
     [TestMethod]
-    [DynamicData(nameof(RollTestData), DynamicDataSourceType.Property)]
+    [DataRow(1, 6, 0)]
+    [DataRow(1, 6, 100)]
+    [DataRow(1, 6, 999)]
     public void Roll_ShouldReturnValueWithinRange(int min, int max, int seed)
     {
         var dice = new Dice(min, max, seed);
